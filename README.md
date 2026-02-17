@@ -1,12 +1,23 @@
 # Text Counter
 
-Simple application to count the number of words, characters, and the most frequent words in a given text.
+A lightweight utility to analyze text by counting characters, words, and identifying the top 3 most frequent words.
 
 ## Features
-- Count the total number of words in the text.
-- Count the total number of characters in the text (including spaces).
-- Identify the most frequent words in the text and their counts.
+- Character count (including spaces and punctuation)
+- Word count with automatic punctuation removal
+- Top 3 most frequent words with occurrence counts
 
 ## Requirements
-- Java 25 or higher.
-- Gradle for building the project.
+- Java 25+
+- Gradle
+
+## Build & Run
+```bash
+./gradlew build
+./gradlew run
+```
+
+## Testing
+```bash
+./gradlew test
+```
