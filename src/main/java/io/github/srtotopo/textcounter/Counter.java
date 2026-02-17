@@ -10,13 +10,19 @@ public class Counter {
     private final Map<String, Integer> wordsFrequency = new HashMap<>();
 
     public Counter(String text) {
-        String[] words = text.trim().replaceAll("\\p{P}", "").split(" ");
-
         characterCount = text.length();
-        wordsCount = words.length;
+
+        String[] words = text.trim()
+                .replaceAll("\\p{P}", "")
+                .toLowerCase()
+                .split("\\s+");
+
+        wordsCount = words[0].isEmpty() ? 0 : words.length;
 
         for (String word : words) {
-            wordsFrequency.merge(word, 1, Integer::sum);
+            if (!word.isEmpty()) {
+                wordsFrequency.merge(word, 1, Integer::sum);
+            }
         }
     }
 
