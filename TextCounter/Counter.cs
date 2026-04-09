@@ -4,29 +4,30 @@ namespace TextCounter;
 
 public class Counter
 {
-    public int CharacterCount { get; }
-    public int WordCount { get; }
     private readonly SortedDictionary<string, int> _wordFrequency = new();
-    
+
     public Counter(string? text)
     {
         text ??= string.Empty;
 
         CharacterCount = text.Length;
 
-        var words = 
+        var words =
             Regex.Replace(text, @"\p{P}+", "")
-            .ToLowerInvariant()
-            .Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
+                .ToLowerInvariant()
+                .Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
 
         WordCount = words.Length;
 
         foreach (var word in words)
         {
-            _wordFrequency.TryGetValue(word, out int count);
+            _wordFrequency.TryGetValue(word, out var count);
             _wordFrequency[word] = count + 1;
         }
     }
+
+    public int CharacterCount { get; }
+    public int WordCount { get; }
 
     public Dictionary<string, int> GetTop3Words()
     {
